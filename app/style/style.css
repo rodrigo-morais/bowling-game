@@ -84,7 +84,8 @@ html, body {
   font-size: 2em;
 }
 
-.board-container .frames table thead tr.button-ball th {
+.board-container .frames table thead tr.button-ball th,
+.board-container .frames table.active thead tr.button-ball th {
   background-color: #FFFFFF;
   border: 0;
   text-align: center;
@@ -101,6 +102,16 @@ html, body {
   float: left;
   height: 50%;
   margin: 0 25%;
+}
+
+.board-container .frames table.active thead tr th {
+  background-color: #94d0f4;
+  cursor: pointer;
+}
+
+.board-container .frames table.active thead tr.button-ball th .ball {
+  background-color: #94d0f4;
+  border-color: #94d0f4;
 }
 
 .board-container .frames table thead tr.button-ball th .ball .hole {

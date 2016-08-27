@@ -1,5 +1,3 @@
-import { combineReducers } from '../../node_modules/redux/dist/redux'
-
 import { START_GAME, STOP_GAME } from './actions'
 
 
@@ -22,6 +20,4 @@ const game = (state = initialState, action) => {
   }
 }
 
-const reducers = combineReducers({ game })
-
-export default reducers
+export default game
