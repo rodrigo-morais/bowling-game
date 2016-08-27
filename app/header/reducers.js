@@ -1,4 +1,4 @@
-import { combineReducers } from '../node_modules/redux/dist/redux'
+import { combineReducers } from '../../node_modules/redux/dist/redux'
 
 import { START_GAME, STOP_GAME } from './actions'
 

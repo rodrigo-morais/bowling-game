@@ -1,8 +1,4 @@
-import reducers from './reducers'
+import gameReducers from './header/reducers'
 import { createStore } from '../node_modules/redux/dist/redux'
 
-export const store = createStore(reducers)
-
-export const isRunning = () => store.getState().game.running
-
-export let changeState = ({type, payload}) => store.dispatch({ type })
+export const store = createStore(gameReducers)
