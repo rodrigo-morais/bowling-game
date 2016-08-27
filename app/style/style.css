@@ -30,7 +30,7 @@ html, body {
 
 .header-container header button {
   float: right;
-  margin: 1.5% 2% auto;
+  margin: 0.7% 2% auto;
   background-color: #FFFFFF;
   border: solid 1px #000000;
   border-radius: 5px;
