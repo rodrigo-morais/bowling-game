@@ -15,7 +15,7 @@ const Header = () => {
   const buildButtonState = () => <button onClick={onClick}>{getButtonTextState()}</button>
 
   return (
-    <div className='app-container'>
+    <div className='header-container'>
       <header>
         <h1>Bowling</h1>
         {buildButtonState()}
