@@ -1,5 +1,7 @@
 import React from 'react'
 
+import * as game from '../header/game'
+
 const Board = () => {
 
   const getTables = () => new Array(10).fill().map(getTable)
@@ -32,7 +34,7 @@ const Board = () => {
         </table>
   }
 
-  return (
+  const buildBoard = () => (
     <div className='board-container'>
       <h2>Score: </h2><h3>0</h3>
       <div className='frames'>
@@ -40,6 +42,9 @@ const Board = () => {
       </div>
     </div>
   )
+
+
+  return game.isRunning() ? buildBoard() : <div />
 }
 
 export default Board

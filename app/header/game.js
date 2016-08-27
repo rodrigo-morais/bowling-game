@@ -3,4 +3,4 @@ import { store } from '../app'
 
 export const isRunning = () => store.getState().game.running
 
-export let changeState = ({type, payload}) => store.dispatch({ type })
+export const changeState = ({type, payload}) => store.dispatch({ type })
