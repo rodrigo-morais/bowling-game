@@ -1,5 +1,7 @@
 import React from 'react'
 
+import BallComponent from './ball/ballComponent'
+
 import * as game from '../header/game'
 import * as board from './board'
 
@@ -14,14 +16,7 @@ const Board = () => {
           <thead>
             <tr className="button-ball">
               <th colSpan="2">
-                <div className="ball">
-                  <div className="hole">
-                  </div>
-                  <div className="hole">
-                  </div>
-                  <div className="hole hole-last">
-                  </div>
-                </div>
+                <BallComponent />
               </th>
             </tr>
             <tr>
