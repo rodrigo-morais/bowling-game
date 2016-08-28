@@ -36,6 +36,7 @@ const board = (state = initialState, action) => {
     case START_BOARD:
       return  { ...state
               , 'actualFrame': 1
+              , 'frames': new Array(10).fill(initialFrame)
               , 'score': 0
               }
     case PLAY_BALL:
