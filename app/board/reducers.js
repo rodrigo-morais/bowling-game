@@ -16,6 +16,14 @@ const getActualFrame = (state) => state.frames
                                     ? state.actualFrame + 1
                                     : state.actualFrame
 
+const hasStrike = (state, frameIndex) =>  frameIndex === 1
+                                          ? false
+                                          : state
+                                              .frames
+                                              .slice( (frameIndex >= 2 ? frameIndex - 2 : 0)
+                                                    , frameIndex - 1
+                                              )[0].points[0] === 10
+
 const buildPoints = (state, payload) => [ ...state.frames.slice(state.actualFrame - 1, state.actualFrame)[0].points
                                         , payload
                                         ]
@@ -46,7 +54,7 @@ const board = (state = initialState, action) => {
               }
     case SCORE:
       return  { ...state
-              , 'score': state.score + action.payload
+              , 'score': state.score + (hasStrike(state, state.actualFrame - 1) ? action.payload + 10 : action.payload)
               }
     default:
       return state
