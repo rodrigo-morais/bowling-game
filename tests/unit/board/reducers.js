@@ -10,6 +10,7 @@ import reducer from '../../../app/board/reducers'
 
 const initialFrame = {
   'points': []
+, 'pins': 10
 }
 
 const initialState = {
@@ -33,9 +34,10 @@ describe('Board reducers', () => {
     const state = { ...initialState
                   , 'actualFrame': 1
                   }
-    const points = reducer(state, { 'type': PLAY_BALL, 'payload': 1 }).frames[0].points
+    const play = reducer(state, { 'type': PLAY_BALL, 'payload': 1 }).frames[0]
 
-    expect(points).to.deep.equal(expected)
+    expect(play.points).to.deep.equal(expected)
+    expect(play.pins).to.equal(9)
   })
 
   it('should add points to score when score action is called', () => {

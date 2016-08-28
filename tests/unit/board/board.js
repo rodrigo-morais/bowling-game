@@ -54,6 +54,8 @@ describe('Board', () => {
   })
 
   it('should get a score with 0 points', () => {
+    board.startBoard()
+
     deepFreeze(board)
 
     expect(board.getScore()).to.equal(0)
@@ -74,9 +76,9 @@ describe('Board', () => {
 
     deepFreeze(board)
 
-    board.scorePoints(10)
+    board.scorePoints(4)
     board.scorePoints(5)
 
-    expect(board.getScore()).to.equal(15)
+    expect(board.getScore()).to.equal(9)
   })
 })

@@ -2,6 +2,7 @@ import { START_BOARD, PLAY_BALL, SCORE } from './actions'
 
 const initialFrame = {
   'points': []
+, 'pins': 10
 }
 
 const initialState = {
@@ -15,18 +16,20 @@ const getActualFrame = (state) => state.frames
                                     ? state.actualFrame + 1
                                     : state.actualFrame
 
-const buildPoints = (state, payload) =>  [ ...state.frames.slice(state.actualFrame - 1, state.actualFrame)[0].points
-                                , payload
-                                ]
+const buildPoints = (state, payload) => [ ...state.frames.slice(state.actualFrame - 1, state.actualFrame)[0].points
+                                        , payload
+                                        ]
 
 const buildFrame = (state, payload) => ({ ...state.frames.slice(state.actualFrame - 1, state.actualFrame)
-                              , 'points': buildPoints(state, payload)
-                              })
+                                        , 'points': buildPoints(state, payload)
+                                        , 'pins': state.frames.slice(state.actualFrame - 1, state.actualFrame)[0].pins - payload
+                                        }
+                                       )
 
-const buildFrames = (state, payload) =>  [ ...state.frames.slice(0, state.actualFrame - 1)
-                                , buildFrame(state, payload)
-                                , ...state.frames.slice(state.actualFrame)
-                                ]
+const buildFrames = (state, payload) => [ ...state.frames.slice(0, state.actualFrame - 1)
+                                        , buildFrame(state, payload)
+                                        , ...state.frames.slice(state.actualFrame)
+                                        ]
 
 const board = (state = initialState, action) => {
   switch(action.type) {
