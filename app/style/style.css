@@ -130,3 +130,7 @@ html, body {
   clear: both;
   display:block;
 }
+
+.board-container .frames table tbody tr td.strike {
+  color: #87ea83;
+}

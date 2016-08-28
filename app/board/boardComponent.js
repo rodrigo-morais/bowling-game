@@ -17,6 +17,8 @@ const Board = () => {
                                           ? getFirstRoll(frameIndex) + getSecondRoll(frameIndex)
                                           : '-'
 
+  const isStrike = (frameIndex) => getFirstRoll(frameIndex) === 10
+
   const getTables = () => new Array(10).fill().map(getTable)
 
   const getTable = (value, index) => {
@@ -33,7 +35,7 @@ const Board = () => {
           </thead>
           <tbody>
             <tr>
-              <td>{getFirstRoll(index)}</td>
+              <td className={isStrike(index) ? "strike": ''}>{getFirstRoll(index)}</td>
               <td>{getSecondRoll(index)}</td>
             </tr>
             <tr>
