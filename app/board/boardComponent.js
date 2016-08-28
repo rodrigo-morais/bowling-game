@@ -13,6 +13,10 @@ const Board = () => {
 
   const getSecondRoll = (frameIndex) => board.getPointsFromFrameIndex(frameIndex).length === 2 ? board.getPointsFromFrameIndex(frameIndex)[1] : '-'
 
+  const getTotalPoints = (frameIndex) =>  board.getPointsFromFrameIndex(frameIndex).length === 2
+                                          ? getFirstRoll(frameIndex) + getSecondRoll(frameIndex)
+                                          : '-'
+
   const getTables = () => new Array(10).fill().map(getTable)
 
   const getTable = (value, index) => {
@@ -31,6 +35,9 @@ const Board = () => {
             <tr>
               <td>{getFirstRoll(index)}</td>
               <td>{getSecondRoll(index)}</td>
+            </tr>
+            <tr>
+              <td colSpan="2">{getTotalPoints(index)}</td>
             </tr>
           </tbody>
         </table>

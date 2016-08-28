@@ -39,6 +39,8 @@ const buildFrames = (state, payload) => [ ...state.frames.slice(0, state.actualF
                                         , ...state.frames.slice(state.actualFrame)
                                         ]
 
+const updateScore = (state, payload) => state.score + (hasStrike(state, state.actualFrame - 1) ? payload + 10 : payload)
+
 const board = (state = initialState, action) => {
   switch(action.type) {
     case START_BOARD:
@@ -54,7 +56,7 @@ const board = (state = initialState, action) => {
               }
     case SCORE:
       return  { ...state
-              , 'score': state.score + (hasStrike(state, state.actualFrame - 1) ? action.payload + 10 : action.payload)
+              , 'score': updateScore(state, action.payload)
               }
     default:
       return state
