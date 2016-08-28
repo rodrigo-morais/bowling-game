@@ -9,6 +9,10 @@ const Board = () => {
 
   const isActive = (frameIndex) => frameIndex === board.getActualFrame()
 
+  const getFirstRoll = (frameIndex) => board.getPointsFromFrameIndex(frameIndex).length >= 1 ? board.getPointsFromFrameIndex(frameIndex)[0] : '-'
+
+  const getSecondRoll = (frameIndex) => board.getPointsFromFrameIndex(frameIndex).length === 2 ? board.getPointsFromFrameIndex(frameIndex)[1] : '-'
+
   const getTables = () => new Array(10).fill().map(getTable)
 
   const getTable = (value, index) => {
@@ -16,7 +20,7 @@ const Board = () => {
           <thead>
             <tr className="button-ball">
               <th colSpan="2">
-                <BallComponent />
+                <BallComponent frameNumber={index + 1} />
               </th>
             </tr>
             <tr>
@@ -25,8 +29,8 @@ const Board = () => {
           </thead>
           <tbody>
             <tr>
-              <td>-</td>
-              <td>-</td>
+              <td>{getFirstRoll(index)}</td>
+              <td>{getSecondRoll(index)}</td>
             </tr>
           </tbody>
         </table>

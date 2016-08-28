@@ -2,9 +2,13 @@ import React from 'react'
 
 import * as board from '../board'
 
-const Ball = () => {
+const Ball = ({ frameNumber }) => {
 
-  const playBall = () => board.playBall()
+  const playBall = () => {
+    if(frameNumber === board.getActualFrame()) {
+      board.playBall()
+    }
+  }
 
   return (
     <div className="ball" onClick={playBall}>

@@ -4,6 +4,11 @@ import reducers from './reducers'
 
 export const getActualFrame = () => store.getState().board.actualFrame
 
+export const getPointsFromFrameIndex = (frameIndex) => store.getState().board.frames[frameIndex].points
+
 export const startBoard = () => store.dispatch({ 'type': START_BOARD })
 
-export const playBall = () => store.dispatch({ 'type': PLAY_BALL, 'payload': 1 })
+export const playBall = () => {
+  const pinsNumber = Math.floor(Math.random() * 11)
+  store.dispatch({ 'type': PLAY_BALL, 'payload': pinsNumber })
+}

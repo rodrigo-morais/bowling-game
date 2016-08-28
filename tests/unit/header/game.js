@@ -8,7 +8,7 @@ import deepFreeze from 'deep-freeze'
 import * as game from '../../../app/header/game'
 import { START_GAME, STOP_GAME } from '../../../app/header/actions'
 
-describe('App', () => {
+describe('Game', () => {
   it("should return that game is running after change state the game", () => {
     let expected = { 'running': true }
 
