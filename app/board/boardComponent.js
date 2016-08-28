@@ -38,7 +38,7 @@ const Board = () => {
 
   const buildBoard = () => (
     <div className='board-container'>
-      <h2>Score: </h2><h3>0</h3>
+      <h2>Score: </h2><h3>{board.getScore()}</h3>
       <div className='frames'>
         {getTables()}
       </div>

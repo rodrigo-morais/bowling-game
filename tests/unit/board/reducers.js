@@ -5,7 +5,7 @@ import 'babel-polyfill'
 import { expect } from 'chai'
 import deepFreeze from 'deep-freeze'
 
-import { START_BOARD, PLAY_BALL } from '../../../app/board/actions'
+import { START_BOARD, PLAY_BALL, SCORE } from '../../../app/board/actions'
 import reducer from '../../../app/board/reducers'
 
 const initialFrame = {
@@ -13,8 +13,9 @@ const initialFrame = {
 }
 
 const initialState = {
-  'actualFrame': 0,
-  'frames': new Array(10).fill(initialFrame)
+  'actualFrame': 0
+, 'frames': new Array(10).fill(initialFrame)
+, 'score': 0
 }
 
 describe('Board reducers', () => {
@@ -35,5 +36,13 @@ describe('Board reducers', () => {
     const points = reducer(state, { 'type': PLAY_BALL, 'payload': 1 }).frames[0].points
 
     expect(points).to.deep.equal(expected)
+  })
+
+  it('should add points to score when score action is called', () => {
+    const expected =  { ...initialState
+                      , score: 10
+                      }
+
+    expect(reducer(initialState, { 'type': SCORE, 'payload': 10 })).to.deep.equal(expected)
   })
 })

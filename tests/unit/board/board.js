@@ -52,4 +52,31 @@ describe('Board', () => {
     expect(board.getActualFrame()).to.equal(2)
     expect(board.getPointsFromFrameIndex(0).length).to.equal(2)
   })
+
+  it('should get a score with 0 points', () => {
+    deepFreeze(board)
+
+    expect(board.getScore()).to.equal(0)
+  })
+
+  it('should get a score with 10 points when call score points passing 10', () => {
+    board.startBoard()
+
+    deepFreeze(board)
+
+    board.scorePoints(10)
+
+    expect(board.getScore()).to.equal(10)
+  })
+
+  it('should get a score with 15 points when call score points passing 10 and after call passing 5', () => {
+    board.startBoard()
+
+    deepFreeze(board)
+
+    board.scorePoints(10)
+    board.scorePoints(5)
+
+    expect(board.getScore()).to.equal(15)
+  })
 })

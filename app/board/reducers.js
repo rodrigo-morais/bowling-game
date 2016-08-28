@@ -1,12 +1,13 @@
-import { START_BOARD, PLAY_BALL } from './actions'
+import { START_BOARD, PLAY_BALL, SCORE } from './actions'
 
 const initialFrame = {
   'points': []
 }
 
 const initialState = {
-  'actualFrame': 0,
-  'frames': new Array(10).fill(initialFrame)
+  'actualFrame': 0
+, 'frames': new Array(10).fill(initialFrame)
+, 'score': 0
 }
 
 const getActualFrame = (state) => state.frames
@@ -32,11 +33,16 @@ const board = (state = initialState, action) => {
     case START_BOARD:
       return  { ...state
               , 'actualFrame': 1
+              , 'score': 0
               }
     case PLAY_BALL:
       return  { ...state
               , 'actualFrame': getActualFrame(state)
               , 'frames': buildFrames(state, action.payload)
+              }
+    case SCORE:
+      return  { ...state
+              , 'score': state.score + action.payload
               }
     default:
       return state
