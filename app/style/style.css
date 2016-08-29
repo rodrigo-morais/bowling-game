@@ -134,3 +134,7 @@ html, body {
 .board-container .frames table tbody tr td.strike {
   color: #87ea83;
 }
+
+.board-container .frames table tbody tr td.spare {
+  color: #87ea83;
+}

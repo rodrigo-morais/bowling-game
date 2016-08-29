@@ -19,6 +19,8 @@ const Board = () => {
 
   const isStrike = (frameIndex) => getFirstRoll(frameIndex) === 10
 
+  const isSpare = (frameIndex) => isStrike(frameIndex) ? false : getTotalPoints(frameIndex) === 10
+
   const getTables = () => new Array(10).fill().map(getTable)
 
   const getTable = (value, index) => {
@@ -39,7 +41,7 @@ const Board = () => {
               <td>{getSecondRoll(index)}</td>
             </tr>
             <tr>
-              <td colSpan="2">{getTotalPoints(index)}</td>
+              <td colSpan="2" className={isSpare(index) ? "spare": ''}>{getTotalPoints(index)}</td>
             </tr>
           </tbody>
         </table>
