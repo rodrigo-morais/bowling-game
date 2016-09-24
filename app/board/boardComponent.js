@@ -2,18 +2,15 @@ import React from 'react'
 
 import BallComponent from './ball/ballComponent'
 
-import * as game from '../header/game'
-import * as board from './board'
+const Board = (props) => {
 
-const Board = () => {
+  const isActive = (frameIndex) => frameIndex === props.getActualFrame()
 
-  const isActive = (frameIndex) => frameIndex === board.getActualFrame()
+  const getFirstRoll = (frameIndex) => props.getPointsFromFrameIndex(frameIndex).length >= 1 ? props.getPointsFromFrameIndex(frameIndex)[0] : '-'
 
-  const getFirstRoll = (frameIndex) => board.getPointsFromFrameIndex(frameIndex).length >= 1 ? board.getPointsFromFrameIndex(frameIndex)[0] : '-'
+  const getSecondRoll = (frameIndex) => props.getPointsFromFrameIndex(frameIndex).length === 2 ? props.getPointsFromFrameIndex(frameIndex)[1] : '-'
 
-  const getSecondRoll = (frameIndex) => board.getPointsFromFrameIndex(frameIndex).length === 2 ? board.getPointsFromFrameIndex(frameIndex)[1] : '-'
-
-  const getTotalPoints = (frameIndex) =>  board.getPointsFromFrameIndex(frameIndex).length === 2
+  const getTotalPoints = (frameIndex) =>  props.getPointsFromFrameIndex(frameIndex).length === 2
                                           ? getFirstRoll(frameIndex) + getSecondRoll(frameIndex)
                                           : '-'
 
@@ -47,17 +44,14 @@ const Board = () => {
         </table>
   }
 
-  const buildBoard = () => (
+  return (
     <div className='board-container'>
-      <h2>Score: </h2><h3>{board.getScore()}</h3>
+      <h2>Score: </h2><h3>{props.getScore()}</h3>
       <div className='frames'>
         {getTables()}
       </div>
     </div>
   )
-
-
-  return game.isRunning() ? buildBoard() : <div />
 }
 
 export default Board

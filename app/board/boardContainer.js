@@ -1,18 +1,20 @@
-import { connect } from 'react-redux'
-import board from './board'
-import Board from './boardComponent' 
+import React from 'react'
 
-const mapStateToProps = (state) => {
-  return { }
+import * as game from '../header/game'
+import * as board from './board'
+import BoardComponent from './boardComponent'
+
+const BoardContainer = () => {
+  const buildBoard = () => (
+      <BoardComponent
+        getActualFrame={board.getActualFrame}
+        getPointsFromFrameIndex={board.getPointsFromFrameIndex}
+        getScore={board.getScore}
+      />
+  )
+
+
+  return game.isRunning() ? buildBoard() : <div />
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    getActualFrame: board.getActualFrame, 
-    getPointsFromFrameIndex: board.getPointsFromFrameIndex,
-    getScore: board.getScore
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Board)
-
+export default BoardContainer
