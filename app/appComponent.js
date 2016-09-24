@@ -1,13 +1,12 @@
 import React from 'react'
 
-import HeaderComponent from './header/headerComponent'
-import BoardComponent from './board/boardComponent'
+import HeaderContainer from './header/headerContainer'
 import BoardContainer from './board/boardContainer'
 
 const App = () => {
   return (
     <div className='app-container'>
-      <HeaderComponent />
+      <HeaderContainer />
       <BoardContainer />
     </div>
   )
