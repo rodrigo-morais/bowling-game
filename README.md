@@ -8,7 +8,7 @@ Try your lucky!!
 
 New features and issues:
 
-- [ ] Create containers to Header and Board to pass store actions as props
+- [X] Create containers to Header and Board to pass store actions as props
 - [ ] Test
   - [ ] Unit
     - [ ] Strike
